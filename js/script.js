@@ -13,32 +13,48 @@ document.getElementById("loader").style.display="none";
 },2000);
 
 });
-const menuBtn=document.getElementById("menu-toggle");
+const menu=document.getElementById("menu-toggle");
 const nav=document.getElementById("nav-menu");
+const overlay=document.getElementById("overlay");
 
-menuBtn.addEventListener("click",()=>{
+menu.onclick=function(){
 
 nav.classList.toggle("active");
 
+overlay.classList.toggle("show");
+
 if(nav.classList.contains("active")){
 
-menuBtn.innerHTML='<i class="fas fa-times"></i>';
+menu.innerHTML='<i class="fas fa-times"></i>';
 
 }else{
 
-menuBtn.innerHTML='<i class="fas fa-bars"></i>';
+menu.innerHTML='<i class="fas fa-bars"></i>';
 
 }
 
-});
-document.querySelectorAll("#nav-menu a").forEach(link=>{
+}
 
-link.addEventListener("click",()=>{
+overlay.onclick=function(){
 
 nav.classList.remove("active");
 
-menuBtn.innerHTML='<i class="fas fa-bars"></i>';
+overlay.classList.remove("show");
 
-});
+menu.innerHTML='<i class="fas fa-bars"></i>';
+
+}
+
+document.querySelectorAll("#nav-menu a").forEach(link=>{
+
+link.onclick=function(){
+
+nav.classList.remove("active");
+
+overlay.classList.remove("show");
+
+menu.innerHTML='<i class="fas fa-bars"></i>';
+
+}
 
 });
